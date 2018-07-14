@@ -1,0 +1,26 @@
+* Class Imbalance
+We artificially induce class imbalance in the [[http://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer][breast cancer dataset]]
+and compare the performance of the following techniques using a
+logistic regression model:
+- Random oversampling of the imbalanced class
+- [[http://contrib.scikit-learn.org/imbalanced-learn/stable/over_sampling.html#smote-adasyn][SMOTE]]
+- Reweighting the loss terms according to the class imbalance
+We use $\el$-2 regularization in all experiment where the coefficient
+is determined by CV. We report mean accuracy over 100 runs. We also
+report the mean of the confusion matrix over these runs to get an
+intuition behind what kinds of mistakes the classifier is making.
+
+In this case, reweighting performs best. Oversampling techniques may
+reduce the robustness of the classifier by resampling outliers, or in
+the case of SMOTE, creating new outliers (since SMOTE performs
+interpolation between datapoints).
+
+| Model               | Accuracy |
+|---------------------+----------|
+| $\el$-2             |     0.85 |
+| Reweighted          |     0.91 |
+| SMOTE               |     0.89 |
+| Random oversampling |     0.90 |
+
+
+
