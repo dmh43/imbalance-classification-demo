@@ -5,6 +5,7 @@ logistic regression model:
 - Random oversampling of the imbalanced class
 - [[http://contrib.scikit-learn.org/imbalanced-learn/stable/over_sampling.html#smote-adasyn][SMOTE]]
 - Reweighting the loss terms according to the class imbalance
+  - ~num_samples / num_samples_in_class~
 We use $\el$-2 regularization in all experiment where the coefficient
 is determined by CV. We report mean accuracy over 100 runs. We also
 report the mean of the confusion matrix over these runs to get an
